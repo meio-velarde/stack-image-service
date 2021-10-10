@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Data\Storages\Models;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -8,11 +8,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class ImageAccessInformation extends Model {
     use HasFactory;
     protected $table = 'image_access_information';
-    protected $primaryKey = 'id';
-    public $incrementing = true;
+    protected $primaryKey = 'url';
+    protected $keyType = 'string';
+    public $timestamps = false;
+    public $incrementing = false;
 
     protected $fillable = [
         'url',
         'index'
     ];
-}
+}   

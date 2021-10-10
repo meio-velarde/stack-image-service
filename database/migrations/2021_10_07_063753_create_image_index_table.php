@@ -14,7 +14,6 @@ class CreateImageIndexTable extends Migration
     public function up()
     {
         Schema::create('image_access_information', function (Blueprint $table) {
-            $table->increments('id');
             $table->string('url');
             $table->integer('index');
         });

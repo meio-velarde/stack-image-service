@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Log;
 
 class ImageController extends Controller {
     public function __construct(
-        private readonly RetrieveAllUrlsAndIndicesUseCase $retrieve_all_images_use_case,
-        private readonly UploadImageUseCase $upload_image_use_case
+        private RetrieveAllUrlsAndIndicesUseCase $retrieve_all_images_use_case,
+        private UploadImageUseCase $upload_image_use_case
         ) {}
 
     public function index():JsonResponse
@@ -28,7 +28,6 @@ class ImageController extends Controller {
     {
         $bad_request_condition = 
             !$request->hasFile('data') || 
-            !$request->exists('file_name') || 
             !$request->exists('index');
 
         if($bad_request_condition) {
@@ -41,9 +40,8 @@ class ImageController extends Controller {
         try {
             $data = $request->file('data');
             $index = $request->input('index');
-            $file_name = $request->input('file_name');
 
-            $this->upload_image_use_case->execute($index, $file_name, $data);
+            $this->upload_image_use_case->execute($index, $data);
         } catch (Throwable $exception) {
             if($exception instanceof ImageUploadFailedException) {
                 Log::error($exception);

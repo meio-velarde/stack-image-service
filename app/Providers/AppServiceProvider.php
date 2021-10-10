@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\ServiceProvider;
 use App\Data\Storages\S3ImageDataStorage;
 
@@ -15,7 +16,8 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton(S3ImageDataStorage::class, function ($app) {
-            return new S3ImageDataStorage('s3-image-bucket');
+            $s3 = Storage::disk('s3-image-bucket');
+            return new S3ImageDataStorage($s3);
         });
     }
 

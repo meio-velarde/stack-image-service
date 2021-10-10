@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Data\Models\ImageAccessInformation;
+use App\Models\ImageAccessInformation;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ImageAccessInformationFactory extends Factory
@@ -22,7 +22,7 @@ class ImageAccessInformationFactory extends Factory
     public function definition()
     {
         return [
-            's3_key' => $this->faker->url(),
+            'url' => $this->faker->url(),
             'index' => intval(0),
         ];
     }
