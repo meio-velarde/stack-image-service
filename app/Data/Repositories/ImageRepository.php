@@ -10,9 +10,7 @@ use App\Exceptions\ImageUploadFailedException;
 class ImageRepository {
     public function __construct(
         private readonly S3ImageDataStorage $s3_image_data_storage
-     ) {
-        $this->s3_image_data_storage = $s3_image_data_storage;
-    }
+     ) {}
 
     public static function make(int $index, string $file_name, $data): RootImage {
         $s3_key = $index. '/' . $file_name;
