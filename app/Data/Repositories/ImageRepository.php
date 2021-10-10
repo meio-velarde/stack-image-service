@@ -8,10 +8,8 @@ use App\Data\Storages\Models\ImageAccessInformation;
 use App\Exceptions\ImageUploadFailedException;
 
 class ImageRepository {
-    protected $s3_image_data_storage;
-
     public function __construct(
-        S3ImageDataStorage $s3_image_data_storage
+        private readonly S3ImageDataStorage $s3_image_data_storage
      ) {
         $this->s3_image_data_storage = $s3_image_data_storage;
     }
