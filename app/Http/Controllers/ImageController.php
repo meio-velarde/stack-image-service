@@ -38,7 +38,6 @@ class ImageController extends Controller {
             );
         }
 
-        Log::debug('YOYOYOYOYO');
         try {
             $data = $request->file('data');
             $index = $request->input('index');
